@@ -1,0 +1,90 @@
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+html {
+  font-size: 14px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    min-height: calc(100vh - 100px); /* adjust 100px to match your navbar + footer height */
+}
+
+body {
+    position: static; /* no relative positioning needed unless sticky footer */
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--vc-light) !important;
+    color: var(--vc-dark); /* text readable on light background */
+}
+:root {
+    --vc-dark: #1A2D42;
+    --vc-steel: #2E4156;
+    --vc-muted: #AAB7B7;
+    --vc-cool: #C0C8CA;
+    --vc-light: #D4D8DD;
+    --vc-white: #f5f3f3;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--vc-dark), var(--vc-steel));
+    color: white;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--vc-dark);
+    border-color: var(--vc-dark);
+}
+
+    .btn-primary:hover {
+        background-color: var(--vc-steel);
+        border-color: var(--vc-steel);
+    }
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--vc-white);
+    color: var(--vc-dark);
+}
+
+    .card h5 {
+        color: var(--vc-dark);
+    }
+
+/* Navbar */
+.navbar {
+    background-color: var(--vc-cool) !important;
+}
+
+    .navbar .nav-link, .navbar-brand {
+        color: var(--vc-steel) !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: var(--vc-muted) !important;
+        }
+
+/* Section background alternates */
+.bg-light-custom {
+    background-color: var(--vc-cool);
+}

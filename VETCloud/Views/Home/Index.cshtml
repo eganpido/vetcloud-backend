@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<style>
+    .paw-icon {
+        display: inline-block;
+        vertical-align: -0.12em;
+        margin-right: 0;
+        fill: currentColor;
+        stroke: none;
+    }
+    .display-4.text-primary .paw-icon {
+        color: inherit;
+    }
+    .vet-accent {
+        color: #d86f6f;
+    }
+</style>
+<!-- Hero Section -->
+<section class="hero py-5 text-center">
+    <div class="container">
+        <h1 class="display-4 fw-semibold">
+            <svg class="paw-icon" viewBox="0 0 64 64" width="1.25em" height="1.25em" aria-hidden="true" focusable="false" role="img">
+                <title>Paw icon</title>
+                <circle cx="18" cy="18" r="6" />
+                <circle cx="31" cy="15" r="6" />
+                <circle cx="44" cy="18" r="6" />
+                <circle cx="54" cy="28" r="6" />
+                <path d="M16 38c0 10 8 16 16 16s16-6 16-16c0-7-7-14-16-14s-16 7-16 14z" />
+            </svg>
+            VETCloud
+        </h1>
+        <p class="lead mb-4">
+            Cloud-based solution for <strong>veterinary clinics</strong> and <strong>pet shops</strong>.
+        </p>
+        <a href="/Account/Login" class="btn btn-primary btn-lg px-4 me-2">Get Started</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-journal-medical fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Patient Records</h5>
+                        <p class="card-text text-muted">
+                            Keep complete medical histories, vaccination records, and appointments for pets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-box-seam fs-1 text-success mb-3"></i>
+                        <h5 class="card-title">Inventory Management</h5>
+                        <p class="card-text text-muted">
+                            Track medicines, pet supplies, and products with real-time stock alerts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-bar-chart-line fs-1 text-warning mb-3"></i>
+                        <h5 class="card-title">Sales & Reports</h5>
+                        <p class="card-text text-muted">
+                            Manage transactions, generate invoices, and monitor revenue with insightful reports.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <img src="~/images/petcare.jpg" alt="About VETCloud" class="img-fluid mb-4" style="max-width: 600px;">
+        <h2 class="fw-bold mb-4">Why Choose VETCloud?</h2>
+        <p class="text-muted mb-0">
+            Designed for modern veterinary clinics and pet shops, VETCloud helps you stay organized,
+            save time, and focus on what matters most — <strong>caring for pets</strong> and growing your business.
+        </p>
+    </div>
+</section>
+
+<!-- Info Section -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <img src="~/images/petshop.jpg" alt="Streamline Operations" class="img-fluid mb-4" style="max-width: 600px;">
+        <h3 class="fw-bold">Streamline Your Clinic and Shop Operations</h3>
+        <p class="text-muted mb-0">
+            VETCloud brings all your records, inventory, and sales into one platform —
+            so you can focus on providing better service and boosting efficiency.
+        </p>
+    </div>
+</section>
