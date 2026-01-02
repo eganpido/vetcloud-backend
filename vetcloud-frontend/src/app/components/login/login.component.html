@@ -1,0 +1,44 @@
+<div class="login-container flex align-items-center justify-content-center min-h-screen p-4">
+    <div class="login-card p-6 shadow-8 border-round-xl bg-white" style="width: 90%; max-width: 550px; margin: 0 auto;">
+
+        <div class="text-center mb-6">
+            <div class="flex align-items-center justify-content-center gap-2 mb-2">
+                <i class="pi pi-cloud text-primary text-5xl"></i>
+                <span class="text-4xl font-bold text-900 tracking-tight">VET<span
+                        class="text-primary">Cloud</span></span>
+            </div>
+            <p class="text-600">Access your veterinary dashboard</p>
+        </div>
+
+        <div class="flex flex-column gap-4">
+            <div class="flex flex-column gap-2">
+                <label class="font-bold text-700">Username</label>
+                <p-iconField iconPosition="left">
+                    <p-inputIcon class="pi pi-user"></p-inputIcon>
+                    <input pInputText type="text" placeholder="username" class="w-full p-inputtext-lg" />
+                </p-iconField>
+            </div>
+
+            <div class="flex flex-column gap-2">
+                <label class="font-bold text-700">Password</label>
+                <p-password [toggleMask]="true" [feedback]="false" placeholder="password" styleClass="w-full"
+                    inputStyleClass="w-full p-inputtext-lg">
+                </p-password>
+            </div>
+
+            <div class="flex align-items-center justify-content-between mb-2">
+                <div class="flex align-items-center gap-2">
+                    <p-checkbox [binary]="true" inputId="rem"></p-checkbox>
+                    <label for="rem" class="text-sm text-700">Keep me logged in</label>
+                </div>
+            </div>
+
+            <p-button label="Sign In" icon="pi pi-sign-in" styleClass="w-full p-button-lg" routerLink="/customers">
+            </p-button>
+        </div>
+
+        <div class="mt-5 text-center">
+            <p-button icon="pi pi-arrow-left" label="Back to Homepage" [text]="true" routerLink="/"></p-button>
+        </div>
+    </div>
+</div>

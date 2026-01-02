@@ -1,0 +1,142 @@
+/* 1. Global Variables */
+:root {
+    --primary-color: #0ea5e9;
+    --primary-hover: #0284c7;
+    --accent-color: #6366f1;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+}
+
+/* 2. Sticky Navbar with Ultra-Glass Effect */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+    transition: all 0.4s ease;
+}
+
+:host ::ng-deep .p-menubar {
+    border: none;
+    background: transparent;
+    padding: 1rem 2rem;
+}
+
+/* 3. Hero Section & Carousel Fixes */
+.hero-section {
+    background:
+        radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+        #ffffff;
+    min-height: 85vh;
+}
+
+/* Container sa Carousel para sa Shadow ug Frame */
+.pet-carousel-wrapper {
+    border-radius: 48px;
+    border: 8px solid white;
+    background: white;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+}
+
+.pet-carousel-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 70px -15px rgba(14, 165, 233, 0.2);
+}
+
+/* I-ensure nga ang PrimeNG carousel image mo-fill sa space */
+:host ::ng-deep .pet-main-img {
+    width: 100%;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+/* Card Base Style */
+.service-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+
+/* Hover Effect para sa tibuok Card */
+.service-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Fix para sa Icon Background: Mahimong Blue ang circle inig hover */
+.service-card:hover .icon-circle {
+    background-color: var(--primary-color) !important;
+    transition: all 0.3s ease;
+}
+
+/* Fix para sa Icon Color: Mahimong White ang icon inig hover aron klaro */
+.service-card:hover .service-icon {
+    transform: rotate(8deg) scale(2.1);
+}
+
+/* Para hapsay ang transition sa icons */
+.service-icon,
+.icon-circle {
+    transition: all 0.3s ease;
+}
+
+/* 5. Typography & Gradients */
+.text-gradient {
+    background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* 6. Scroll Reveal Logic */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* 7. Responsive Fixes */
+@media screen and (max-width: 960px) {
+    .text-7xl {
+        font-size: 3.2rem !important;
+        line-height: 1.1 !important;
+    }
+
+    .pet-carousel-wrapper {
+        border-radius: 32px;
+        margin-top: 2rem;
+    }
+
+    :host ::ng-deep .pet-main-img {
+        height: 350px !important;
+    }
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+    /* Usba gikan sa inline-block para nindot ang wrapping */
+    padding-right: 5px;
+    /* Likay sa maputol nga letra sa tumoy */
+}
+
+.flex.align-items-center.gap-2:hover .border-circle {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

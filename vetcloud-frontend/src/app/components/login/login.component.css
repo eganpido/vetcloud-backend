@@ -1,0 +1,54 @@
+/* Container Background Animation */
+.login-container {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    min-height: 100vh;
+}
+
+/* Slide Up & Fade In Animation */
+.login-card {
+    animation: slideUpFade 0.8s ease-out forwards;
+    opacity: 0;
+    /* Magsugod sa dili makita */
+    transform: translateY(30px);
+    /* Magsugod sa ubos gamay */
+}
+
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effect sa Card para mas interactive */
+.login-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Siguraduha nga ang p-password field mokuha sa tibuok width */
+:host ::ng-deep .p-password input {
+    width: 100%;
+}
+
+/* Siguraduhon nga ang icon naa sa sulod ug sentro */
+.p-input-icon-left {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.p-input-icon-left>i {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
+    /* I-sentro ang icon vertically */
+    left: 1rem;
+    z-index: 1;
+    color: #6b7280;
+    /* Gray color para sa icon */
+}
+
+/* Hatagan og padding ang input para dili matabunan sa icon */
+.p-input-icon-left>input {
+    padding-left: 3rem !important;
+}

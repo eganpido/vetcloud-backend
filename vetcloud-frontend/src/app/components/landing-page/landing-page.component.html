@@ -1,0 +1,217 @@
+<div class="sticky-nav shadow-2">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <div class="flex align-items-center gap-2 mr-5 cursor-pointer" (click)="scrollTo('home')">
+                <i class="pi pi-cloud text-primary-500 text-5xl"></i>
+                <span class="text-4xl font-bold text-900 tracking-tight">
+                    VET<span class="text-primary-500">Cloud</span>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <p-button label="Login" icon="pi pi-user" severity="primary" [outlined]="true"
+                routerLink="/login"></p-button>
+        </ng-template>
+    </p-menubar>
+</div>
+
+<div class="landing-wrapper">
+    <section id="home" class="hero-section flex align-items-center justify-content-center px-4 py-8 overflow-hidden">
+        <div class="grid grid-nogutter max-w-screen-xl w-full">
+            <div class="col-12 md:col-6 flex flex-column justify-content-center reveal">
+                <span class="text-primary font-bold mb-3 tracking-widest block text-2xl md:text-3xl">
+                    WELCOME TO VETCloud
+                </span>
+                <h1 class="text-8xl font-bold text-900 mb-3 line-height-1">Care for Your <br>
+                    <span class="text-gradient">Best Friends</span>
+                </h1>
+                <p class="text-xl text-700 line-height-3 mb-5 pr-0 md:pr-5">
+                    VETCloud combines advanced veterinary medicine with pet shop convenience—all managed in the cloud
+                    for faster, high-quality service for your pets.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <p-button label="Book Appointment" icon="pi pi-calendar" size="large" class="p-button-raised"
+                        (click)="scrollTo('services')"></p-button>
+                    <p-button label="Visit Pet Store" icon="pi pi-shopping-cart" severity="secondary" size="large"
+                        [outlined]="true" (click)="scrollTo('services')"></p-button>
+                </div>
+            </div>
+
+            <div class="col-12 md:col-6 flex justify-content-center mt-5 md:mt-0 relative reveal delay-2">
+                <div class="absolute w-20rem h-20rem bg-primary opacity-10 border-circle blur-3xl"
+                    style="top: -10%; right: -10%;"></div>
+
+                <div class="w-full shadow-8 border-round-3xl overflow-hidden pet-carousel-wrapper">
+                    <p-carousel [value]="images" [numVisible]="1" [numScroll]="1" [circular]="true"
+                        [autoplayInterval]="3000" [showIndicators]="false" [showNavigators]="false">
+                        <ng-template let-pet pTemplate="item">
+                            <div class="relative">
+                                <img [src]="pet.url" [alt]="pet.alt" class="w-full block pet-main-img"
+                                    style="height: 500px; object-fit: cover;">
+                                <div
+                                    class="absolute bottom-0 left-0 w-full h-4rem bg-gradient-to-t from-black-alpha-40 to-transparent">
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+
+                <div class="absolute bg-white p-3 border-round-xl shadow-4 flex align-items-center gap-3 z-2 reveal delay-3"
+                    style="bottom: 10%; left: -5%;">
+                    <div class="bg-green-100 p-2 border-circle">
+                        <i class="pi pi-verified text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-900">Expert Care</span>
+                        <small class="text-600">Certified Veterinarians</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-6 bg-white border-y-1 border-gray-100">
+        <div class="grid max-w-screen-xl mx-auto px-4 reveal">
+            <div class="col-6 md:col-3 text-center border-right-1 border-gray-100">
+                <h3 class="text-4xl font-bold text-primary mb-1">5k+</h3>
+                <p class="text-600 m-0 uppercase text-xs font-bold tracking-wider">Happy Pets</p>
+            </div>
+            <div class="col-6 md:col-3 text-center border-right-1 border-gray-100">
+                <h3 class="text-4xl font-bold text-primary mb-1">12+</h3>
+                <p class="text-600 m-0 uppercase text-xs font-bold tracking-wider">Specialist Vets</p>
+            </div>
+            <div class="col-6 md:col-3 text-center border-right-1 border-gray-100">
+                <h3 class="text-4xl font-bold text-primary mb-1">100%</h3>
+                <p class="text-600 m-0 uppercase text-xs font-bold tracking-wider">Cloud Secured</p>
+            </div>
+            <div class="col-6 md:col-3 text-center">
+                <h3 class="text-4xl font-bold text-primary mb-1">24/7</h3>
+                <p class="text-600 m-0 uppercase text-xs font-bold tracking-wider">Pet Support</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section bg-gray-50 py-8 px-4">
+        <div class="text-center mb-8 reveal">
+            <h2 class="text-5xl md:text-6xl font-bold text-900 mb-3">Why Choose VETCloud?</h2>
+            <p class="text-xl text-600 max-w-30rem mx-auto">
+                Complete services for the health and wellness of your pets.
+            </p>
+        </div>
+
+        <div class="grid max-w-screen-xl mx-auto">
+            <div class="col-12 md:col-4 p-3 reveal delay-1">
+                <div class="service-card p-6 shadow-2 border-round-xl bg-white text-center h-full border-1 border-transparent cursor-pointer hover:shadow-5 transition-all transition-duration-300"
+                    routerLink="/login">
+                    <div
+                        class="icon-circle bg-blue-50 inline-flex align-items-center justify-content-center p-4 border-circle mb-4">
+                        <i class="pi pi-heart-fill text-primary text-4xl service-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-900">Veterinary Clinic</h3>
+                    <p class="text-600 line-height-3">
+                        From routine check-ups to advanced surgery, our team is ready to provide expert care.
+                    </p>
+                    <span class="text-primary font-semibold mt-3 inline-block">Learn More <i
+                            class="pi pi-arrow-right text-xs"></i></span>
+                </div>
+            </div>
+
+            <div class="col-12 md:col-4 p-3 reveal delay-2">
+                <div class="service-card p-6 shadow-2 border-round-xl bg-white text-center h-full border-1 border-transparent cursor-pointer hover:shadow-5 transition-all transition-duration-300"
+                    routerLink="/login">
+                    <div
+                        class="icon-circle bg-green-50 inline-flex align-items-center justify-content-center p-4 border-circle mb-4">
+                        <i class="pi pi-shopping-bag text-green-500 text-4xl service-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-900">Pet Store</h3>
+                    <p class="text-600 line-height-3">
+                        Premium food, interactive toys, and accessories for your loyal companion.
+                    </p>
+                    <span class="text-green-500 font-semibold mt-3 inline-block">Shop Now <i
+                            class="pi pi-arrow-right text-xs"></i></span>
+                </div>
+            </div>
+
+            <div class="col-12 md:col-4 p-3 reveal delay-3">
+                <div
+                    class="service-card p-6 shadow-2 border-round-xl bg-white text-center h-full border-1 border-transparent">
+                    <div
+                        class="icon-circle bg-purple-50 inline-flex align-items-center justify-content-center p-4 border-circle mb-4">
+                        <i class="pi pi-cloud-upload text-purple-500 text-4xl service-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-900">Cloud Records</h3>
+                    <p class="text-600 line-height-3">
+                        Access your pet's medical history anytime, anywhere—100% paperless.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-white text-900 py-8 px-4 border-top-1 border-gray-200">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="grid justify-content-center pb-8">
+                <div class="col-12 flex flex-column align-items-center text-center reveal pt-8">
+
+                    <div class="flex align-items-center justify-content-center gap-3 mb-6">
+                        <i class="pi pi-cloud text-primary-500 text-5xl"></i>
+                        <span class="text-4xl font-bold text-900 tracking-tight">
+                            VET<span class="text-primary-500">Cloud</span>
+                        </span>
+                    </div>
+
+                    <div class="w-full px-4 mb-4">
+                        <h2 class="text-5xl md:text-8xl font-bold line-height-1 m-0 text-900">
+                            World-class pet care, <br class="hidden md:block">
+                            <span class="text-gradient" style="display: inline-block; font-size: 0.8em;">powered by the
+                                cloud.</span>
+                        </h2>
+                    </div>
+
+                    <div class="w-full px-4 flex justify-content-center mb-8">
+                        <p class="text-xl md:text-2xl line-height-3 m-0 text-600" style="max-width: 55rem;">
+                            Providing <span class="text-900 font-semibold">innovative solutions</span>
+                            for modern veterinary medicine and high-quality pet care services.
+                        </p>
+                    </div>
+
+                    <div class="w-8rem h-4px bg-primary border-round mb-8 opacity-50"></div>
+
+                    <div class="flex flex-wrap justify-content-center gap-4 md:gap-6 mt-4">
+                        <a href="https://facebook.com" target="_blank"
+                            class="flex align-items-center gap-2 text-700 no-underline hover:text-primary transition-all transition-duration-300">
+                            <div class="flex align-items-center justify-content-center border-circle w-2rem h-2rem"
+                                style="background-color: #1877F2;">
+                                <i class="pi pi-facebook text-white text-sm"></i>
+                            </div>
+                            <span class="font-bold">Facebook</span>
+                        </a>
+
+                        <a href="https://instagram.com" target="_blank"
+                            class="flex align-items-center gap-2 text-700 no-underline hover:text-primary transition-all transition-duration-300">
+                            <div class="flex align-items-center justify-content-center border-circle w-2rem h-2rem"
+                                style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
+                                <i class="pi pi-instagram text-white text-sm"></i>
+                            </div>
+                            <span class="font-bold">Instagram</span>
+                        </a>
+
+                        <a href="https://youtube.com" target="_blank"
+                            class="flex align-items-center gap-2 text-700 no-underline hover:text-primary transition-all transition-duration-300">
+                            <div class="flex align-items-center justify-content-center border-circle w-2rem h-2rem"
+                                style="background-color: #FF0000;">
+                                <i class="pi pi-youtube text-white text-sm"></i>
+                            </div>
+                            <span class="font-bold">YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex justify-content-center align-items-center mt-6 pt-5 border-top-1 border-gray-100 text-500 text-sm text-center">
+                <p>© 2026 VETCloud by Streetsmart Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>

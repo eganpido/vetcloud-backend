@@ -1,0 +1,142 @@
+/* I-ensure nga ang icon naa sa sulod sa left side sa input */
+.p-input-icon-left {
+    display: block;
+    /* Imbes nga inline-block aron mo-stretch ang span */
+    position: relative;
+}
+
+.p-input-icon-left>i {
+    position: absolute;
+    top: 50%;
+    margin-top: -.5rem;
+    /* I-center ang icon vertically */
+    left: .75rem;
+    /* Distansya gikan sa wala */
+    color: #6c757d;
+}
+
+.p-input-icon-left>input {
+    padding-left: 2.5rem !important;
+    /* Hatagan og space ang icon sa wala */
+}
+
+CSS
+
+/* Siguraduha nga ang table container naay relative position */
+:host ::ng-deep .p-datatable-customers {
+    position: relative;
+    border-radius: 12px;
+    overflow: visible !important; /* Usba gikan sa hidden ngadto sa visible */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+/* Himoon nga Sticky ang Header */
+:host ::ng-deep .p-datatable-customers .p-datatable-thead > tr > th {
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Para pirme siya sa ibabaw */
+    background: #f1f5f9;
+    /* ... sa uban nimong styling ... */
+}
+
+:host ::ng-deep .p-datatable-customers .p-datatable-thead > tr > th:hover {
+    background: #e2e8f0;
+}
+
+/* Body Styling - Gi-remove ang scale para mawala ang scrollbar */
+:host ::ng-deep .p-datatable-customers .p-datatable-tbody > tr {
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Mas modern nga Hover Effect (No Scaling) */
+:host ::ng-deep .p-datatable-customers .p-datatable-tbody > tr:hover {
+    background-color: #f8fafc !important;
+    /* Inay mo-scale, butangan nato og blue accent sa kilid */
+    box-shadow: inset 4px 0 0 #3b82f6; 
+}
+
+:host ::ng-deep .p-datatable-customers .p-datatable-tbody > tr > td {
+    padding: 1.2rem 1rem;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* Customer Code Badge Style */
+.customer-code-badge {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 1px solid #bae6fd;
+    display: inline-block;
+}
+
+/* Customer Name Style */
+.customer-name {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* 1. Base style para sa Action Buttons */
+:host ::ng-deep .custom-edit-btn, 
+:host ::ng-deep .custom-delete-btn {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+    border: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: transparent !important; /* Default background is clear */
+}
+
+/* 2. ENHANCED EDIT BUTTON HOVER */
+:host ::ng-deep .custom-edit-btn {
+    color: #22c55e !important; /* Green icon color */
+}
+
+:host ::ng-deep .custom-edit-btn:hover {
+    background: rgba(34, 197, 94, 0.1) !important; /* Humok nga green tint */
+    color: #15803d !important;
+    transform: translateY(-3px); /* Mo-alsa og gamay */
+    box-shadow: 0 5px 15px rgba(34, 197, 94, 0.2); /* Soft green glow */
+}
+
+/* 3. ENHANCED DELETE BUTTON HOVER */
+:host ::ng-deep .custom-delete-btn {
+    color: #ef4444 !important; /* Red icon color */
+}
+
+:host ::ng-deep .custom-delete-btn:hover {
+    background: rgba(239, 68, 68, 0.1) !important; /* Humok nga red tint */
+    color: #b91c1c !important;
+    transform: translateY(-3px); /* Mo-alsa og gamay */
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2); /* Soft red glow */
+}
+
+/* 4. Active state (Inig click/pislit) */
+:host ::ng-deep .custom-edit-btn:active,
+:host ::ng-deep .custom-delete-btn:active {
+    transform: scale(0.95); /* Mogamay gamay inig click para tactile feel */
+}
+
+/* Paginator Enhancement */
+:host ::ng-deep .p-paginator {
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 1rem;
+    border-radius: 0 0 12px 12px;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #eff6ff;
+    color: #3b82f6;
+    border-radius: 8px;
+}
+
+:host ::ng-deep .p-datatable-customers .p-datatable-tbody > tr:hover {
+    background-color: #ffffff !important;
+    box-shadow: inset 4px 0 0 #3b82f6; /* Naay blue line sa kilid inig hover */
+    transition: all 0.1s ease;
+}
