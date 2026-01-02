@@ -45,7 +45,7 @@ router.delete('/delete/:id', async (req, res) =>
 {
     try {
         await Customer.findByIdAndDelete(req.params.id);
-        res.json({ message: "Customer successfully deletedfsdf!" });
+        res.json({ message: "Customer successfully deleted!" });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
