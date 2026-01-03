@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const CustomerSchema = new mongoose.Schema({
+    // I-add kini nga field
+    customerId: { type: Number },
     code: { type: String, required: true },
     customerName: { type: String, required: true },
     customerAdress: { type: String, required: true },
