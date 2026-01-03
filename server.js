@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-// 1. I-IMPORT ANG IMONG ROUTE FILE (ADDED THIS)
+// 1. I-IMPORT ANG MGA ROUTE FILES
 const customerRoutes = require('./routes/customerRoutes');
+const authRoutes = require('./routes/auth'); // Gidugang kini para sa User/Auth
 
 const app = express();
 
@@ -12,9 +13,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// 2. I-USE ANG ROUTE (ADDED THIS)
-// Ang tanang URL sa customer magsugod na sa /api/customers
+// 2. I-USE ANG MGA ROUTES
 app.use('/api/customers', customerRoutes);
+app.use('/api/auth', authRoutes); // Gidugang kini para sa /api/auth/register ug /api/auth/login
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/vetcloud_db')
@@ -22,10 +23,11 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/vetcloud_db
     .catch(err => console.error("Error connecting to DB:", err));
 
 // Sample Route
-app.get('/', (req, res) => {
+app.get('/', (req, res) =>
+{
     res.send("VETCloud API is running...");
 });
 
-// Port
+// Port (Hinumdomi: 5000 ang imong gamit)
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

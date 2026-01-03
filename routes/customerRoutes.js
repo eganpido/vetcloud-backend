@@ -1,39 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const Customer = require('../models/customer'); // Siguraduha nga sakto ang path sa imong model
+const Customer = require('../models/customer');
 const Counter = require('../models/counter');
+const auth = require('../middleware/auth'); // I-import ang auth middleware nga imong gihimo
 
-// 1. ROUTE PARA MAG-ADD OG CUSTOMER (POST)
-router.post('/add', async (req, res) =>
+// 1. ROUTE PARA MAG-ADD OG CUSTOMER (Gidugangan og 'auth')
+router.post('/add', auth, async (req, res) =>
 {
     try {
-        // 1. Kuha og counter
+        // 1. Kuha og sequence para sa customerId
         const counter = await Counter.findOneAndUpdate(
             { id: 'customerId' },
             { $inc: { seq: 1 } },
             { new: true, upsert: true }
         );
 
-        console.log("Next ID is:", counter.seq);
-
-        // 2. Isagol ang customerId sa data gikan sa req.body
+        // 2. Isagol ang customerId ug ang createdById gikan sa token
         const newCustomer = new Customer({
             ...req.body,
-            customerId: counter.seq
+            customerId: counter.seq,
+            createdById: req.user.userId // Ang userId nakuha nato gikan sa decoded token
         });
 
-        // 3. I-save
+        // 3. I-save sa database
         const savedCustomer = await newCustomer.save();
         res.status(201).json(savedCustomer);
 
     } catch (err) {
-        console.error("SAVE ERROR:", err.message); // Makita nimo sa terminal ang rason sa failure
+        console.error("SAVE ERROR:", err.message);
         res.status(400).json({ message: err.message });
     }
 });
 
-// 2. ROUTE PARA MAKUHA ANG TANANG CUSTOMERS (GET)
-router.get('/all', async (req, res) =>
+// 2. ROUTE PARA MAKUHA ANG TANANG CUSTOMERS (Gidugangan og 'auth')
+router.get('/all', auth, async (req, res) =>
 {
     try {
         const customers = await Customer.find();
@@ -43,14 +43,21 @@ router.get('/all', async (req, res) =>
     }
 });
 
-// 3. ROUTE PARA MAG-UPDATE OG CUSTOMER (PUT)
-router.put('/update/:id', async (req, res) =>
+// 3. ROUTE PARA MAG-UPDATE OG CUSTOMER (Gidugangan og 'auth')
+router.put('/update/:id', auth, async (req, res) =>
 {
     try {
+        // I-attach nato ang updatedById para mahibaloan kinsa ang last nag-edit
+        const updateData = {
+            ...req.body,
+            updatedById: req.user.userId,
+            updatedDateTime: Date.now()
+        };
+
         const updatedCustomer = await Customer.findByIdAndUpdate(
             req.params.id,
-            { $set: req.body },
-            { new: true } // Para i-return ang updated nga data imbes nga ang karaan
+            { $set: updateData },
+            { new: true }
         );
         res.json(updatedCustomer);
     } catch (err) {
@@ -58,8 +65,8 @@ router.put('/update/:id', async (req, res) =>
     }
 });
 
-// 4. ROUTE PARA MAG-DELETE OG CUSTOMER (DELETE)
-router.delete('/delete/:id', async (req, res) =>
+// 4. ROUTE PARA MAG-DELETE (Gidugangan og 'auth')
+router.delete('/delete/:id', auth, async (req, res) =>
 {
     try {
         await Customer.findByIdAndDelete(req.params.id);
@@ -69,7 +76,8 @@ router.delete('/delete/:id', async (req, res) =>
     }
 });
 
-router.get('/migrate-ids', async (req, res) =>
+// MIGRATION (Temporaryo gihapon, pwede nimo butangan og 'auth' para Admin ra maka-run)
+router.get('/migrate-ids', auth, async (req, res) =>
 {
     try {
         const customers = await Customer.find({ customerId: { $exists: false } });
