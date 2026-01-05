@@ -102,4 +102,28 @@ router.get('/migrate-ids', auth, async (req, res) =>
     }
 });
 
+// Endpoint para sa Dashboard Statistics
+router.get('/stats', auth, async (req, res) =>
+{
+    try {
+        // 1. Total Customers - Ihap sa tanan nga anaa sa 'customers' table
+        const totalCustomers = await Customer.countDocuments({});
+
+        // 2. New Customers Today - Ihap sa tanan nga na-add karong adlawa (global)
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Sugod sa 12:00 AM karong adlawa
+
+        const todayCount = await Customer.countDocuments({
+            createdDateTime: { $gte: today }
+        });
+
+        res.json({
+            totalCustomers: totalCustomers,
+            todayCount: todayCount
+        });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 module.exports = router;
