@@ -6,6 +6,7 @@ require('dotenv').config();
 // 1. I-IMPORT ANG MGA ROUTE FILES
 const customerRoutes = require('./routes/customerRoutes');
 const authRoutes = require('./routes/auth'); // Gidugang kini para sa User/Auth
+const branchRoutes = require('./routes/branchRoutes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 // 2. I-USE ANG MGA ROUTES
 app.use('/api/customers', customerRoutes);
 app.use('/api/auth', authRoutes); // Gidugang kini para sa /api/auth/register ug /api/auth/login
+app.use('/api/branches', branchRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/vetcloud_db')
