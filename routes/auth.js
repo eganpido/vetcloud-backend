@@ -25,8 +25,8 @@ router.post('/register', async (req, res) =>
             userId: counter.seq,
             username: req.body.username,
             password: hashedPassword,
-            role: req.body.role,
-            branchId: req.body.branchId // Siguroha nga ma-save sab ang branchId kon naa
+            fullname: req.body.fullname,
+            role: req.body.role
         });
 
         const savedUser = await newUser.save();
@@ -69,6 +69,7 @@ router.post('/login', async (req, res) =>
             user: {
                 userId: user.userId,
                 username: user.username,
+                fullname: user.fullname,
                 role: user.role
             }
         });
