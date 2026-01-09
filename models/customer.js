@@ -7,6 +7,7 @@ const CustomerSchema = new mongoose.Schema({
     customerName: { type: String, required: true },
     customerAdress: { type: String, required: true },
     contactNumber: String,
+    isLocked: { type: Boolean, default: false },
     createdById: Number,
     createdDateTime: { type: Date, default: Date.now },
     updatedById: Number,
